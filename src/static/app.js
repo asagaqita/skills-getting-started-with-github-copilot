@@ -27,6 +27,20 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
         `;
 
+        // Add participant icons and improve list rendering
+        if (details.participants.length > 0) {
+          const participantsList = document.createElement("ul");
+          details.participants.forEach((participant) => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `<span class='participant-icon'>👤</span> ${participant}`;
+            participantsList.appendChild(listItem);
+          });
+          const participantsHeader = document.createElement("p");
+          participantsHeader.innerHTML = "<strong>Participants:</strong>";
+          activityCard.appendChild(participantsHeader);
+          activityCard.appendChild(participantsList);
+        }
+
         activitiesList.appendChild(activityCard);
 
         // Add option to select dropdown
